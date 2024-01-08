@@ -53,3 +53,43 @@ int main(){
 
     return 0;
 }
+
+/*其他人的，速度較快
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+#define int long long
+ 
+signed main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);  
+	int n, x;
+	cin >> n >> x;
+	vector<pair<int, int>> nums(n);
+	for (int i = 0; i < n; i ++) {
+		int a;
+		cin >> a;
+		nums[i] = {a, i+1};
+	}
+	sort(nums.begin(), nums.end());
+	int l = 0;
+	int r = n-1;
+	while (l < r) {
+		if (nums[l].first+nums[r].first < x) { //too small
+			l++;
+		} else if (nums[l].first+nums[r].first > x) { //too big
+			r--;
+		} else { //fit
+			break;
+		}
+	}
+	if (nums[l].first+nums[r].first == x && l != r) { //answer
+		cout << nums[l].second << " " << nums[r].second << endl;
+	} else {
+		cout << "IMPOSSIBLE\n"; 
+	}
+}
+
+*/
