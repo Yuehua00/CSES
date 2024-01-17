@@ -1,4 +1,5 @@
 // 來源 : https://www.youtube.com/watch?app=desktop&v=CkJRXaQw8BA
+
 /*
 Time limit: 1.00 s
 Memory limit: 512 MB
