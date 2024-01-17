@@ -22,8 +22,36 @@ Example
   Output:
     2
 */
+#include <iostream>
+#include <algorithm>
+#include <set>
 
-/*
+using namespace std;
+
+int main(){
+
+    int n = 0;
+    scanf("%d", &n);
+    int arr[n+5];
+    for(int i = 0; i < n; i++){
+        scanf("%d", &arr[i]);
+    }
+    multiset<int> tower;
+    tower.insert(arr[0]);
+    for(int i = 1; i < n; i++){
+        auto it = tower.upper_bound(arr[i]);
+        if(tower.find(*it) != tower.end() && arr[i] < *it) {  
+            tower.erase(it);
+        }
+        tower.insert(arr[i]);
+    }
+
+    printf("%d\n", (int)tower.size());
+
+    return 0;
+}
+
+/*第一版，一個WA一個TLE(看上面就好
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -41,7 +69,7 @@ int main(){
     vector<vector<int>> tower(n);
     int in = 0, now = 0, last = 0, maxn = 0;
     for(int i = 0; i < n; i++){
-        if((arr[i] == arr[i-1] && i-1 >= 0) || arr[i] >= maxn){
+        if((arr[i] == arr[i-1] && i-1 >= 0) || arr[i] >= maxn){ // maxn 是暫存目前底部最大數
             tower[now].emplace_back(arr[i]);
             now++;
             maxn = max(maxn, arr[i]);
