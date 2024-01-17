@@ -22,6 +22,7 @@ Example
     Output:
         5
 */
+
 #include <iostream>
 #include <algorithm>
 #include <set>         // 利用 set 不是 queue 的原因是因為 set 才能用 count 回傳是否存在某個元素
