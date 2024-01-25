@@ -1,3 +1,5 @@
+// 來源 : https://www.youtube.com/watch?v=KnsDFCcBJbY
+
 /*
 Time limit: 1.00 s
 Memory limit: 512 MB
@@ -21,6 +23,40 @@ Example
     3 6 2 7 5 1 4
 */
 
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+//****************************************************************************************此區為因為要用find_by_order************
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template <typename T>
+using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+//******************************************************************************************************************************
+
+int main(){
+
+    int n = 0, k = 0;
+    scanf("%d%d", &n, &k);
+    ordered_set<int> pos;
+    for(int i = 1; i<= n; i++){
+        pos.insert(i);
+    }
+    int start = 0;
+    while(n--){
+        start %= pos.size();
+        int positionToRemove = (start + k) % pos.size();
+        start = positionToRemove;
+        auto ans = pos.find_by_order(positionToRemove);
+        printf("%d ", *ans);
+        pos.erase(ans);
+    }
+    printf("\n");
+
+    return 0;
+}
 
 
 /* TLE
