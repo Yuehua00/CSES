@@ -40,7 +40,6 @@ int main()
 {
     ll total = 0;
     scanf("%lld", &n);
-    int arr[n+5]; memset(arr, 0, sizeof(arr));
     for(ll i = 0; i < n; i++){
         scanf("%d", &a);
         book.emplace_back(a);
